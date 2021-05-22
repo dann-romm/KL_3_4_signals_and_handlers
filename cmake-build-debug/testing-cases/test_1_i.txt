@@ -1,0 +1,5 @@
+root
+/root obj_1 3 1
+/root obj_2 2 0
+endtree
+//

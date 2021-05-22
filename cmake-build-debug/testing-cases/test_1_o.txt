@@ -1,0 +1,4 @@
+Object tree
+root
+    obj_1
+    obj_2

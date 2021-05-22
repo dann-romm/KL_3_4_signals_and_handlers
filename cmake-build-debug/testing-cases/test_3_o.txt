@@ -1,0 +1,12 @@
+Object tree
+root
+    obj_1
+        obj_1
+            obj_3
+    obj_2
+        obj_1
+//obj_3 Object name: obj_3
+/root/obj_1/obj_1 Object name: obj_1
+/root/obj_3 Object not found
+/root Object name: root
+//obj_4 Object not found
