@@ -1,8 +1,0 @@
-root
-/root obj_1 2 1
-/root obj_2 2 1
-/root/obj_1 obj_2 2 1
-//obj_1 obj_3 2 1
-/root/obj_1/obj_3 obj_1 2 1
-endtree
-//
