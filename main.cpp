@@ -80,52 +80,64 @@ void compare_testing_files (int test_case) {
         throw invalid_argument(message.str());
     }
 
-    message.flush();
-    test_output_file.flush();
+    message.str(string());
+    test_output_file.str(string());
     f1.close();
     f2.close();
+
+    throw counter;
 };
 
-void copy_testing_file (int test_case) {
+void copy_testing_file (int epochs) {
     ifstream f1;
     ofstream f2;
 
-    string buffer;
-
+    string buffer, path;
     stringstream test_input_file;
-    test_input_file << "testing-cases/test_" << test_case << "_i.txt";
 
-    f1.open(test_input_file.str(), ios::in);
     f2.open("testing-cases/test_input.txt", ios::out);
 
-    while (!f1.eof()) {
-        buffer += (char)f1.get();
-    }
-    buffer.erase(buffer.end() - 1);
-    f2 << buffer;
+    for (int test_case = 1; test_case <= epochs; test_case++) {
 
-    test_input_file.flush();
-    f1.close();
+        test_input_file << "testing-cases/test_" << test_case << "_i.txt";
+        path = test_input_file.str();
+        test_input_file.str(string());
+
+        f1.open(path, ios::in);
+
+        while (!f1.eof()) {
+            getline(f1, buffer);
+            f2 << buffer << "\n";
+        }
+
+        f1.close();
+
+    }
+
     f2.close();
+
 }
 
-void clear_test_files () {
-    ofstream f1, f2;
-    f1.open("testing-cases/test_input.txt", ios::out | ios::trunc);
+void clear_test_files (bool all_to_clear) {
+    ofstream f2;
     f2.open("testing-cases/test_output.txt", ios::out | ios::trunc);
-    f1.close();
     f2.close();
+
+    if (all_to_clear) {
+        ofstream f1;
+        f1.open("testing-cases/test_input.txt", ios::out | ios::trunc);
+        f1.close();
+    }
 }
 
 void testing (int epochs, int (*function)()) { //
 
     set_fin();
     set_fout();
-    clear_test_files();
+    clear_test_files(true);
+    copy_testing_file(epochs);
 
     for (int test_case = 1; test_case <= epochs; test_case++) {
-
-        copy_testing_file(test_case);
 
         main_KL_3_4();
 
@@ -136,18 +148,22 @@ void testing (int epochs, int (*function)()) { //
             set_cout();
             cout << "ошибка на тесте " << test_case << ":\n";
             cout << ex.what();
+            cout << "\n";
+            set_fout();
+        } catch(int counter) {
+            set_cout();
+            cout << "тест " << test_case << " пройден, " << counter << " строк(и) верны\n";
             set_fout();
         }
 
-        clear_test_files();
+        clear_test_files(false);
 
     }
 }
 
-
 int main() {
 
-    testing(2, &main_KL_3_4);
+    testing(3, &main_KL_3_4);
 
     return 0;
 }
