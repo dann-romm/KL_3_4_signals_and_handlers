@@ -1,8 +1,23 @@
 root
-/root obj_1 2 1
-/root obj_2 2 1
-/root/obj_1 obj_2 2 1
-//obj_1 obj_3 2 1
-/root/obj_1/obj_3 obj_1 2 1
+/root a 2 1
+/root b 3 1
+/root c 2 0
+/root/a d 3 1
+/root/b e 2 1
+/root/c f 2 0
+/root/a/d g 2 1
 endtree
-//
+1 a c
+2 a g
+3 c a
+4 a e
+5 e d
+6 f g
+7 g a
+0
+a HELLO_A
+c HELLO_C
+e HELLO_E
+f HELLO_F
+g HELLO_G
+endsignals

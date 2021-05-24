@@ -8,9 +8,10 @@ App::App () {
 
 void App::input () {
     this->tree->build_tree();
+    this->tree->output_tree(0);
 }
 
 void App::output () {
-    this->tree->output_tree(0);
-    this->tree->find_objects();
+    this->tree->set_connects();
+    this->tree->send_signals();
 }

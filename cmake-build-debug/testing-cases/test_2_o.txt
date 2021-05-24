@@ -1,7 +1,25 @@
 Object tree
 root
-    obj_1
-        obj_2
-        obj_3
-            obj_1
-    obj_2
+    a
+        d
+            g
+    b
+        e
+    c
+        f
+Set connects
+1 a c
+2 a g
+3 c a
+4 a e
+5 e d
+6 f g
+7 g a
+Emit signals
+Signal to c Text: a -> HELLO_A
+Signal to g Text: a -> HELLO_A
+Signal to e Text: a -> HELLO_A
+Signal to a Text: c -> HELLO_C
+Signal to d Text: e -> HELLO_E
+Signal to g Text: f -> HELLO_F
+Signal to a Text: g -> HELLO_G

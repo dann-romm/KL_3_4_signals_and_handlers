@@ -2,4 +2,8 @@ root
 /root obj_1 3 1
 /root obj_2 2 0
 endtree
-//
+1 obj_1 obj_2
+0
+obj_1 THE_MESSAGE
+obj_1 ok
+endsignals

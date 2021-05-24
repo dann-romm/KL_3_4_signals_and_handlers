@@ -2,3 +2,8 @@ Object tree
 root
     obj_1
     obj_2
+Set connects
+1 obj_1 obj_2
+Emit signals
+Signal to obj_2 Text: obj_1 -> THE_MESSAGE
+Signal to obj_2 Text: obj_1 -> ok

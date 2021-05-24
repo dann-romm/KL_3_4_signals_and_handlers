@@ -12,7 +12,7 @@ int main_KL_3_4 () {
 
 int main() {
 
-    Testing* test = new Testing(3, &main_KL_3_4);
+    Testing* test = new Testing(4, &main_KL_3_4);
     test->testing();
 
     return 0;
